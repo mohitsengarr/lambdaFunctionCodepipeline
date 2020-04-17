@@ -9,7 +9,6 @@ phases:
       - export BUCKET=codepipeline-us-east-1-517517069469
       - aws cloudformation package --template-file template.yml --s3-bucket $BUCKET --output-template-file outputtemplate.yml
 artifacts:
-  type: zip
   files:
     - template.yml
     - outputtemplate.yml
