@@ -1,14 +1,25 @@
 version: 0.2
+
 phases:
   install:
     runtime-versions:
-      nodejs: 10
+      nodejs: 12
+    commands:
+      - echo Installing dependencies...
+      - npm ci
   build:
     commands:
-      - npm install time
-      - export BUCKET=codepipeline-us-east-1-517517069469
-      - aws cloudformation package --template-file template.yml --s3-bucket $BUCKET --output-template-file outputtemplate.yml
+      - echo Building project...
+      - echo Build started on `date`
+      - npm run build
+  post_build:
+    commands:
+      - echo Build completed on `date`
+
 artifacts:
   files:
-    - template.yml
-    - outputtemplate.yml
+    - "**/*"
+
+cache:
+  paths:
+    - "/root/.npm/**/*"
