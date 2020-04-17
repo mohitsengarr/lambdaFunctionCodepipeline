@@ -12,5 +12,4 @@ Resources:
         MyTimeApi:
           Type: Api
           Properties:
-            Path: /TimeResource
             Method: GET
